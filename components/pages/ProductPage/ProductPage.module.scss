@@ -1,0 +1,50 @@
+.productPage {
+  margin: 0 auto;
+  font-family: Roboto;
+  min-height: 100vh;
+}
+
+.productContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.title {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.detailsContainer {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.imageContainer {
+  width: 40%;
+  position: relative;
+  height: 300px;
+}
+
+.textContainer {
+  width: 40%;
+  text-align: left;
+}
+
+.buyButton {
+  background-color: #ff9800;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.descriptionContainer {
+  font-size: 20px;
+  margin-top: 20px;
+}

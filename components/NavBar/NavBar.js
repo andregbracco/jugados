@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styles from "./NavBar.module.scss";
 
 const Navbar = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     checkAuth();
@@ -16,7 +18,11 @@ const Navbar = () => {
 
   const handleLogout = () => {
     setIsAuthenticated(false);
+    localStorage.setItem("isAuthenticated", "false");
+    router.push("/");
   };
+
+  const isLoginPage = router.pathname === "/login";
 
   return (
     <nav className={styles.navbar}>
@@ -27,10 +33,10 @@ const Navbar = () => {
         <span>Jugados</span>
       </div>
       <div className={styles.navRight}>
-        {isAuthenticated ? (
+        {!isLoginPage && isAuthenticated ? (
           <button onClick={handleLogout}>Cerrar Sesión</button>
-        ) : (
-          <Link href="/login">Iniciar Sesión</Link>
+        ) : !isLoginPage && (
+          <Link href="/login" className={styles.login}>Iniciar Sesión</Link>
         )}
       </div>
     </nav>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./HomePage.module.scss";
 import NavBar from "@/components/NavBar/NavBar.js";
 
@@ -59,20 +60,21 @@ const HomePage = ({ gamesData }) => {
         <div className={styles.cards}>
           {filteredGames.map((game) => (
             <div key={game.id} className={styles.card}>
-              <div className={styles.imageContainer}>
-                <Image
-                  src={game.image}
-                  alt={game.name}
-                  objectFit="contain"
-                  layout="fill"
-                />
-              </div>
-
-              <div className={styles.details}>
-                <h3>{game.name}</h3>
-                <p>Precio: ${game.price}</p>
-                <p>Condición: {game.condition}</p>
-              </div>
+              <Link href={`/product/${game.id}`}>
+                <div className={styles.imageContainer}>
+                  <Image
+                    src={game.image}
+                    alt={game.name}
+                    objectFit="contain"
+                    layout="fill"
+                  />
+                </div>
+                <div className={styles.details}>
+                  <h3>{game.name}</h3>
+                  <p>Precio: ${game.price}</p>
+                  <p>Condición: {game.condition}</p>
+                </div>
+              </Link>
             </div>
           ))}
         </div>
